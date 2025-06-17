@@ -8,6 +8,13 @@
 - Spring Boot (3.5.0)
 - Spring AI (OpenAI)
 
+## 🏃🏻 Rodar
+
+### Requisitos
+
+- Java 21
+- Google Cloud CLI
+
 ## 🔗 Links Úteis
 
 - [Spring AI Docs](https://spring.io/projects/spring-ai)
