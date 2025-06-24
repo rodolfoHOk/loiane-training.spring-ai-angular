@@ -1,0 +1,32 @@
+<mat-card class="chat-container">
+  <div>
+    <mat-toolbar>Chat Simples</mat-toolbar>
+  </div>
+
+  <div class="chat-history">
+    <div class="messages">
+      @for (message of messages(); track message) {
+      <div class="message">
+        <div class="message-bubble" [ngClass]="{'user': !message.isBot}">
+          {{message.message}}
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <mat-form-field class="full-width">
+      <mat-label>Pergunte-me qualquer coisa</mat-label>
+      <input matInput [(ngModel)]="userInput" (keyup.enter)="sendMessage()" />
+      <button
+        matSuffix
+        matIconButton
+        aria-label="Enviar"
+        (click)="sendMessage()"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</mat-card>
