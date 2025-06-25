@@ -1,1 +1,6 @@
-GET http://localhost:8080/api/chat?userInput=O que é Spring IA?
+POST http://localhost:8080/api/chat
+Content-Type: application/json
+
+{
+    "message": "O que é Spring AI?"
+}

@@ -3,12 +3,18 @@
     <mat-toolbar>Chat Simples</mat-toolbar>
   </div>
 
-  <div class="chat-history">
+  <div class="chat-history" #chatHistory>
     <div class="messages">
       @for (message of messages(); track message) {
       <div class="message">
         <div class="message-bubble" [ngClass]="{'user': !message.isBot}">
           {{message.message}}
+        </div>
+      </div>
+      } @if (isLoading) {
+      <div class="message">
+        <div class="message-bubble">
+          <span class="typing">...</span>
         </div>
       </div>
       }
@@ -24,6 +30,7 @@
         matIconButton
         aria-label="Enviar"
         (click)="sendMessage()"
+        [disabled]="isLoading"
       >
         <mat-icon>send</mat-icon>
       </button>

@@ -7,7 +7,8 @@
 - Java 21
 - Spring Boot (3.5.0)
 - Spring AI (OpenAI / VertexAI Gemini / Azure OpenAI)
-- Angular
+- Angular (20)
+- Angular Material
 
 ## 🏃🏻 Rodar
 
