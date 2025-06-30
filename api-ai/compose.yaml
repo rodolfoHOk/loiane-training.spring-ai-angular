@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: 'mysql:9.3.0'
+    environment:
+      - 'MYSQL_DATABASE=mydatabase'
+      - 'MYSQL_ROOT_PASSWORD=verysecret'
+      - 'MYSQL_USER=myuser'
+      - 'MYSQL_PASSWORD=secret'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf:ro

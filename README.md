@@ -40,5 +40,6 @@
 - [Spring AI - Gemini Chat](https://docs.spring.io/spring-ai/reference/api/chat/vertexai-gemini-chat.html)
 - [Spring AI - Azure OpenAI Chat](https://docs.spring.io/spring-ai/reference/api/chat/azure-openai-chat.html)
 - [Spring AI - Chat Memory](https://docs.spring.io/spring-ai/reference/api/chat-memory.html)
+- [Spring AI - Github](https://github.com/spring-projects/spring-ai)
 - [Angular Docs](https://angular.dev/overview)
 - [Angular Material](https://material.angular.dev)
