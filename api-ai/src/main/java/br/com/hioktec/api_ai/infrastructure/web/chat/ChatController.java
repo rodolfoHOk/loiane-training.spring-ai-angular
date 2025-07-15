@@ -1,6 +1,7 @@
 package br.com.hioktec.api_ai.infrastructure.web.chat;
 
 import br.com.hioktec.api_ai.application.dto.ChatMessage;
+import br.com.hioktec.api_ai.application.dto.ChatRequest;
 import br.com.hioktec.api_ai.application.dto.ErrorResponse;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.retry.NonTransientAiException;
@@ -20,18 +21,18 @@ public class ChatController {
     }
 
     @PostMapping
-    ChatMessage simpleChat(@RequestBody ChatMessage message) {
+    ChatMessage simpleChat(@RequestBody ChatRequest message) {
         try {
             String response = this.chatClient.prompt()
                     .user(message.message())
                     .call()
                     .content();
-            return new ChatMessage(response);
+            return new ChatMessage(response, "ASSISTANT");
         } catch (Exception ex) {
             if (ex instanceof NonTransientAiException) {
                 return new ChatMessage(
                         new ErrorResponse(429, "Too Many Requests", "insufficient quota")
-                                .toString());
+                                .toString(), "ASSISTANT");
             } else {
                 throw ex;
             }

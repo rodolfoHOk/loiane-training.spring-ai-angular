@@ -2,6 +2,7 @@ package br.com.hioktec.api_ai.infrastructure.web.chat;
 
 import br.com.hioktec.api_ai.application.dto.Chat;
 import br.com.hioktec.api_ai.application.dto.ChatMessage;
+import br.com.hioktec.api_ai.application.dto.ChatRequest;
 import br.com.hioktec.api_ai.application.dto.NewChatResponse;
 import br.com.hioktec.api_ai.application.service.MemoryChatService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,19 +25,24 @@ public class MemoryChatController {
     }
 
     @PostMapping("/{chatId}")
-    ChatMessage simpleChat(@PathVariable String chatId, @RequestBody ChatMessage message) {
+    ChatMessage simpleChat(@PathVariable String chatId, @RequestBody ChatRequest message) {
         String response = this.memoryChatService.chat(message.message(), chatId);
-        return new ChatMessage(response);
+        return new ChatMessage(response, "ASSISTANT");
     }
 
     @PostMapping("/start")
-    NewChatResponse newChat(@RequestBody ChatMessage chatMessage) {
+    NewChatResponse newChat(@RequestBody ChatRequest chatMessage) {
         return this.memoryChatService.createNewChat(chatMessage.message());
     }
 
     @GetMapping
     List<Chat> getAllChatsForUser() {
         return this.memoryChatService.getAllChats();
+    }
+
+    @GetMapping("/{chatId}")
+    List<ChatMessage> getAllMessages(@PathVariable String chatId) {
+        return this.memoryChatService.getChatMessages(chatId);
     }
 
 }

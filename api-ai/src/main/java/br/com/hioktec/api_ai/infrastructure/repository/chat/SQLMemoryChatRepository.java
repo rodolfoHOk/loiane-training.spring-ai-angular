@@ -1,6 +1,7 @@
 package br.com.hioktec.api_ai.infrastructure.repository.chat;
 
 import br.com.hioktec.api_ai.application.dto.Chat;
+import br.com.hioktec.api_ai.application.dto.ChatMessage;
 import br.com.hioktec.api_ai.domain.repository.MemoryChatRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,18 @@ public class SQLMemoryChatRepository implements MemoryChatRepository {
                         resultSet.getString("conversation_id"),
                         resultSet.getString("description")),
                 userId
+        );
+    }
+
+    @Override
+    public List<ChatMessage> getChatMessages(String chatId) {
+        String sql = "SELECT content, type FROM spring_ai_chat_memory WHERE conversation_id = ? ORDER BY timestamp ASC";
+        return jdbcTemplate.query(
+                sql,
+                (resultSet, _rowNumber) -> new ChatMessage(
+                        resultSet.getString("content"),
+                        resultSet.getString("type")),
+                chatId
         );
     }
 

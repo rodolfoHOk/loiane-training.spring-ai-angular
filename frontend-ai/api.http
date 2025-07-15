@@ -27,3 +27,7 @@ Content-Type: application/json
 
 ### Memory Chat: List chats
 GET http://localhost:8080/api/chat-memory
+
+
+### Memory Chat: List chat messages
+GET http://localhost:8080/api/chat-memory/{{chatId}}

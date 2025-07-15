@@ -1,6 +1,7 @@
 package br.com.hioktec.api_ai.application.service;
 
 import br.com.hioktec.api_ai.application.dto.Chat;
+import br.com.hioktec.api_ai.application.dto.ChatMessage;
 import br.com.hioktec.api_ai.application.dto.ErrorResponse;
 import br.com.hioktec.api_ai.application.dto.NewChatResponse;
 import br.com.hioktec.api_ai.domain.repository.MemoryChatRepository;
@@ -70,6 +71,10 @@ public class MemoryChatService {
 
     public List<Chat> getAllChats() {
         return this.memoryChatRepository.getAllChatsForUser(DEFAULT_USER_ID);
+    }
+
+    public List<ChatMessage> getChatMessages(String chatId) {
+        return this.memoryChatRepository.getChatMessages(chatId);
     }
 
     private String generateChatDescription(String message) {
