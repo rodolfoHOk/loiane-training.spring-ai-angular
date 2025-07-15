@@ -1,4 +1,4 @@
-### Simple Chat
+### Simple Chat: Send message
 POST http://localhost:8080/api/chat
 Content-Type: application/json
 
@@ -6,10 +6,18 @@ Content-Type: application/json
     "message": "O que é Spring AI?"
 }
 
-### Memory Chat
+### Memory Chat: Send message
 POST http://localhost:8080/api/chat-memory
 Content-Type: application/json
 
 {
     "message": "O que é Spring AI?"
+}
+
+### Memory Chat: Create New Chat
+POST http://localhost:8080/api/chat-memory/start
+Content-Type: application/json
+
+{
+    "message": "Tell me a joke about programming"
 }
