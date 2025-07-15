@@ -21,3 +21,14 @@ Content-Type: application/json
 {
     "message": "Tell me a joke about programming"
 }
+
+### Variable: Chat ID
+@chatId = 9db8a57a-4467-4551-82e3-79175d369ec8
+
+### Memory Chat: Send message to chat
+POST http://localhost:8080/api/chat-memory/{{chatId}}
+Content-Type: application/json
+
+{
+    "message": "Tell me a another joke about programming"
+}
