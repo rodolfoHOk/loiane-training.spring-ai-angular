@@ -6,14 +6,6 @@ Content-Type: application/json
     "message": "O que é Spring AI?"
 }
 
-### Memory Chat: Send message
-POST http://localhost:8080/api/chat-memory
-Content-Type: application/json
-
-{
-    "message": "O que é Spring AI?"
-}
-
 ### Memory Chat: Create New Chat
 POST http://localhost:8080/api/chat-memory/start
 Content-Type: application/json
@@ -32,3 +24,6 @@ Content-Type: application/json
 {
     "message": "Tell me a another joke about programming"
 }
+
+### Memory Chat: List chats
+GET http://localhost:8080/api/chat-memory

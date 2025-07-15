@@ -1,5 +1,6 @@
 package br.com.hioktec.api_ai.application.service;
 
+import br.com.hioktec.api_ai.application.dto.Chat;
 import br.com.hioktec.api_ai.application.dto.ErrorResponse;
 import br.com.hioktec.api_ai.application.dto.NewChatResponse;
 import br.com.hioktec.api_ai.domain.repository.MemoryChatRepository;
@@ -12,6 +13,7 @@ import org.springframework.ai.chat.memory.repository.jdbc.JdbcChatMemoryReposito
 import org.springframework.ai.retry.NonTransientAiException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -64,6 +66,10 @@ public class MemoryChatService {
         String chatId = this.memoryChatRepository.generateChatId(DEFAULT_USER_ID, description);
         String response = this.chat(message, chatId);
         return new NewChatResponse(chatId, description, response);
+    }
+
+    public List<Chat> getAllChats() {
+        return this.memoryChatRepository.getAllChatsForUser(DEFAULT_USER_ID);
     }
 
     private String generateChatDescription(String message) {
