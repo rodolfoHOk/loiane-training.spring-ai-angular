@@ -36,6 +36,13 @@ public class SQLMemoryChatRepository implements MemoryChatRepository {
     }
 
     @Override
+    public boolean existsByChatId(String chatId) {
+        String sql = "SELECT COUNT(*) FROM chat_memory WHERE conversation_id = ?::uuid";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, chatId);
+        return count != null && count == 1;
+    }
+
+    @Override
     public List<ChatMessage> getChatMessages(String chatId) {
         String sql = "SELECT content, type FROM spring_ai_chat_memory WHERE conversation_id = ? ORDER BY timestamp ASC";
         return jdbcTemplate.query(

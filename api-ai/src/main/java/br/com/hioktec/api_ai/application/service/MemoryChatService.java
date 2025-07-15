@@ -45,7 +45,11 @@ public class MemoryChatService {
                 .build();
     }
 
-    public String chat(String message, String chatId) {
+    public String sendChatMessage(String message, String chatId) {
+        if (!this.memoryChatRepository.existsByChatId(chatId)) {
+            throw new IllegalArgumentException("Chat ID does not exist: " + chatId);
+        }
+
         try {
             return this.chatClient.prompt()
                     .advisors(advisorSpec -> advisorSpec.param(ChatMemory.CONVERSATION_ID, chatId))
@@ -65,7 +69,7 @@ public class MemoryChatService {
     public NewChatResponse createNewChat(String message) {
         String description = generateChatDescription(message);
         String chatId = this.memoryChatRepository.generateChatId(DEFAULT_USER_ID, description);
-        String response = this.chat(message, chatId);
+        String response = this.sendChatMessage(message, chatId);
         return new NewChatResponse(chatId, description, response);
     }
 

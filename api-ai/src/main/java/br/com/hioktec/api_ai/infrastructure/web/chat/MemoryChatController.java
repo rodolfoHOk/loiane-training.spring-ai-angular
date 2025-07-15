@@ -25,13 +25,13 @@ public class MemoryChatController {
     }
 
     @PostMapping("/{chatId}")
-    ChatMessage simpleChat(@PathVariable String chatId, @RequestBody ChatRequest message) {
-        String response = this.memoryChatService.chat(message.message(), chatId);
+    ChatMessage sendChatMessage(@PathVariable String chatId, @RequestBody ChatRequest message) {
+        String response = this.memoryChatService.sendChatMessage(message.message(), chatId);
         return new ChatMessage(response, "ASSISTANT");
     }
 
     @PostMapping("/start")
-    NewChatResponse newChat(@RequestBody ChatRequest chatMessage) {
+    NewChatResponse createNewChat(@RequestBody ChatRequest chatMessage) {
         return this.memoryChatService.createNewChat(chatMessage.message());
     }
 

@@ -11,6 +11,8 @@ public interface MemoryChatRepository {
 
     List<Chat> getAllChatsForUser(String userId);
 
+    boolean existsByChatId(String chatId);
+
     List<ChatMessage> getChatMessages(String chatId);
 
 }
