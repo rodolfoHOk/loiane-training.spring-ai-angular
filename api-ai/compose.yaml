@@ -1,12 +1,21 @@
 services:
-  mysql:
-    image: 'mysql:9.3.0'
+  postgres:
+    image: 'postgres:17.5-alpine3.22'
     environment:
-      - 'MYSQL_DATABASE=mydatabase'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
-      - 'MYSQL_PASSWORD=secret'
+      - 'POSTGRES_DB=mydatabase'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=myuser'
     ports:
-      - '3306:3306'
-    volumes:
-      - ./my.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - '5432:5432'
+
+#  mysql:
+#    image: 'mysql:9.3.0'
+#    environment:
+#      - 'MYSQL_DATABASE=mydatabase'
+#      - 'MYSQL_ROOT_PASSWORD=verysecret'
+#      - 'MYSQL_USER=myuser'
+#      - 'MYSQL_PASSWORD=secret'
+#    ports:
+#      - '3306:3306'
+#    volumes:
+#      - ./my.cnf:/etc/mysql/conf.d/my.cnf:ro
